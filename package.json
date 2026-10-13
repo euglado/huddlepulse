@@ -1,0 +1,29 @@
+{
+  "name": "huddlepulse",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A Discord agenda timer with private previews and permission-checked meeting controls",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24.13.0 <25"
+  },
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "build": "tsc -p tsconfig.json",
+    "lint": "biome check .",
+    "test": "node --test --experimental-strip-types test/*.test.ts",
+    "supply": "node scripts/check-supply.mjs",
+    "check": "npm run lint && npm run build && npm test && npm run supply",
+    "register": "npm run build && node --env-file-if-exists=.env dist/register.js",
+    "start": "node --env-file-if-exists=.env dist/main.js"
+  },
+  "dependencies": {
+    "discord.js": "14.27.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "@types/node": "24.10.1",
+    "typescript": "7.0.2"
+  }
+}
